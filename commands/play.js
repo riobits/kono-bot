@@ -14,7 +14,7 @@ module.exports = {
             const connection = await message.member.voice.channel.join();
             const videoId = args[0].slice(args[0].indexOf('watch?v=') + 8);
 
-            const video = await (args[0].startsWith('http')? yts({videoId}) : (await yts(args.join(' '))).videos[0]);
+            const video = args[0].startsWith('http')? (await yts({videoId})) : (await yts(args.join(' '))).videos[0];
 
             connection.play(ytdl(video.url, { filter: 'audioonly' }))
 
