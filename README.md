@@ -1,5 +1,5 @@
 # Kono-Bot
-# an discord bot for music & memes
+an discord bot for music & memes
 ### start
 ```
 node start
