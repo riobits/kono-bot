@@ -1,3 +1,7 @@
+if(process.env.NODE_ENV !== 'production') {
+    require('dotenv').config();
+}
+
 const { Client, Collection } = require('discord.js');
 const { prefix, token } = require('./config');
 const fs = require('fs');

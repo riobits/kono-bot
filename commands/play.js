@@ -12,8 +12,11 @@ module.exports = {
     async execute(message, args) {
         if(message.member.voice.channel) {
             const connection = await message.member.voice.channel.join();
-            const url = args[0].indexOf('watch?v=') || args[0].indexOf('.be/');
-            const videoId = args[0].slice(url + 8) || args[0].slice(url + 4);
+            const url = args[0].indexOf('watch?v=') === -1?
+            args[0].indexOf('.be/') : args[0].indexOf('watch?v=');
+
+            const videoId = args[0].indexOf('watch?v=') === -1?
+            args[0].slice(url + 4) : args[0].slice(url + 8);
 
             const video = args[0].startsWith('http')? await yts({videoId}) : (await yts(args.join(' '))).videos[0];
 
