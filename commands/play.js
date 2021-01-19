@@ -16,7 +16,7 @@ module.exports = {
             const mobileURL = args[0].indexOf('.be/');
             const videoId = args[0].slice(wURL + 8) || args[0].slice(mobileURL + 4);
 
-            const video = await args[0].startsWith('http')? yts({videoId}) : (yts(args.join(' '))).videos[0];
+            const video = args[0].startsWith('http')? await yts({videoId}) : (await yts(args.join(' '))).videos[0];
 
             connection.play(ytdl(video.url, { filter: 'audioonly' }))
 
